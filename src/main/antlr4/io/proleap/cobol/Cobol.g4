@@ -2604,11 +2604,11 @@ integerLiteral
    ;
 
 cicsDfhRespLiteral
-   : DFHRESP LPARENCHAR (cobolWord | literal) RPARENCHAR
+   : DFHRESP LPARENCHAR ~RPARENCHAR+ RPARENCHAR
    ;
 
 cicsDfhValueLiteral
-   : DFHVALUE LPARENCHAR (cobolWord | literal) RPARENCHAR
+   : DFHVALUE LPARENCHAR ~RPARENCHAR+ RPARENCHAR
    ;
 
 // keywords ----------------------------------

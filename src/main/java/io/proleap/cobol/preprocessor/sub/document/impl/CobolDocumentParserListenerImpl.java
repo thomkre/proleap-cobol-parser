@@ -186,10 +186,13 @@ public class CobolDocumentParserListenerImpl extends CobolPreprocessorBaseListen
 		 * copy the copy book
 		 */
 		final CopySourceContext copySource = ctx.copySource();
+		final String copyBookName = copySource.getText().replaceAll("['\"]", "");
 		final String copyBookContent = getCopyBookContent(copySource, params);
 
 		if (copyBookContent != null) {
+			context().write("      *> COPYBOOK-START: " + copyBookName + CobolPreprocessor.NEWLINE);
 			context().write(copyBookContent + CobolPreprocessor.NEWLINE);
+			context().write("      *> COPYBOOK-END: " + copyBookName + CobolPreprocessor.NEWLINE);
 			context().replaceReplaceablesByReplacements(tokens);
 		}
 
